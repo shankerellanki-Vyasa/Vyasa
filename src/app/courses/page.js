@@ -1,0 +1,14 @@
+import { courses } from "@/data/courses";
+import CoursesListingClient from "./CoursesListingClient";
+
+export const metadata = {
+  title: "Courses | CA, CMA Coaching – Vyasa Institute",
+  description:
+    "Explore all courses at Vyasa Institute — CA Foundation, CA Intermediate, CA Final, CMA, and Online Classes. India\u2019s premier preparatory institute.",
+  keywords:
+    "Vyasa Institute courses, CA coaching, CMA courses, CA Foundation, CA Inter, preparatory institute",
+};
+
+export default function CoursesPage() {
+  return <CoursesListingClient courses={courses} />;
+}

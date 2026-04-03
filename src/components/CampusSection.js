@@ -1,0 +1,144 @@
+"use client";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import Image from "next/image";
+import { FaTimes, FaExpand, FaBuilding, FaMicrophone, FaLightbulb, FaClock } from "react-icons/fa";
+
+const galleryImages = [
+  {
+    title: "Smart Classrooms",
+    icon: <FaLightbulb />,
+    color: "from-primary-dark to-surface-deep-2",
+    image: "/gallery/cls.jpeg",
+  },
+  {
+    title: "Seminar Hall",
+    icon: <FaMicrophone />,
+    color: "from-surface-deep-2 to-primary-dark",
+    image: "/gallery/semi.jpeg",
+  },
+  {
+    title: "Study Rooms",
+    icon: <FaClock />,
+    color: "from-primary-dark to-surface-deep-2",
+    image: "/gallery/classRomm.JPG",
+  },
+  {
+    title: "Hostel Facility",
+    icon: <FaBuilding />,
+    color: "from-surface-deep-2 to-primary-dark",
+    image: "/assets/why.png",
+  },
+];
+
+const dailySchedule = [
+  
+  { time: "8:00 AM", activity: "Classes Begin" },
+  { time: "1:00 PM", activity: "Lunch Break" },
+  { time: "2:00 PM", activity: "Practice Sessions" },
+  { time: "5:00 PM", activity: "Doubt Clearing" },
+  { time: "7:00 PM", activity: "Supervised Study" },
+];
+
+export default function CampusSection() {
+  const [lightbox, setLightbox] = useState(null);
+
+  return (
+    <section className="py-18 bg-[#f9f8f6] relative overflow-hidden">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="text-center mb-20">
+          <span className="section-label text-gold mb-4 inline-block"><FaBuilding className="text-[9px]" /> Campus Life</span>
+          <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-primary-dark tracking-tight mb-4">Campus & Facilities</h2>
+          <div className="royal-divider mb-6" />
+          <p className="text-black max-w-xl mx-auto text-[15px] leading-relaxed font-sans">A disciplined environment designed for focused learning and holistic development.</p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10">
+          {/* Facility grid */}
+          <div className="grid grid-cols-2 gap-4">
+            {galleryImages.map((fac, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.96 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, duration: 0.5 }}
+                whileHover={{ scale: 1.02, y: -3 }}
+                onClick={() => setLightbox(i)}
+                className={`relative h-36 md:h-44 rounded-2xl overflow-hidden cursor-pointer group transition-all duration-400 ${!fac.image ? `bg-gradient-to-br ${fac.color}` : ""}`}
+              >
+                {fac.image ? (
+                  <>
+                    <Image
+                      src={fac.image}
+                      alt={fac.title}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
+                      <h3 className="text-sm md:text-base font-heading font-semibold text-center">{fac.title}</h3>
+                    </div>
+                    <FaExpand className="absolute top-3 right-3 text-[10px] text-white/70 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </>
+                ) : (
+                  <>
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4">
+                      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-lg mb-2 group-hover:scale-110 transition-transform">{fac.icon}</div>
+                      <h3 className="text-sm md:text-base font-heading font-semibold text-center">{fac.title}</h3>
+                      <FaExpand className="mt-2 text-[10px] opacity-0 group-hover:opacity-50 transition-opacity" />
+                    </div>
+                  </>
+                )}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Daily routine */}
+          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="bg-white rounded-2xl border border-gray-100/80 p-8">
+            <h3 className="font-heading font-bold text-primary-dark text-xl mb-2">Daily Routine</h3>
+            <p className="text-primary-dark text-xs font-sans font-semibold mb-6">Classes {"\u2192"} Practice {"\u2192"} Revision</p>
+            <div className="space-y-4">
+              {dailySchedule.map((item, i) => (
+                <motion.div key={i} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="flex items-center gap-4 group">
+                  <span className="text-xs font-sans font-bold text-gold w-16 shrink-0">{item.time}</span>
+                  <div className="w-2 h-2 rounded-full bg-primary-dark/10 group-hover:bg-gold transition-colors shrink-0" />
+                  <span className="text-[14px] font-sans font-medium text-primary-dark group-hover:text-primary-dark transition-colors">{item.activity}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Lightbox */}
+        {lightbox !== null && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6" onClick={() => setLightbox(null)}>
+            <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} className={`relative w-full max-w-2xl h-80 md:h-[450px] rounded-3xl overflow-hidden ${!galleryImages[lightbox].image ? `bg-gradient-to-br ${galleryImages[lightbox].color} flex flex-col items-center justify-center` : ""}`} onClick={(e) => e.stopPropagation()}>
+              {galleryImages[lightbox].image ? (
+                <>
+                  <Image
+                    src={galleryImages[lightbox].image}
+                    alt={galleryImages[lightbox].title}
+                    fill
+                    sizes="90vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
+                  <h2 className="absolute bottom-5 left-5 text-xl md:text-2xl font-heading font-bold text-white">{galleryImages[lightbox].title}</h2>
+                </>
+              ) : (
+                <>
+                  <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-3xl text-white mb-4">{galleryImages[lightbox].icon}</div>
+                  <h2 className="text-2xl font-heading font-bold text-white">{galleryImages[lightbox].title}</h2>
+                </>
+              )}
+              <button onClick={() => setLightbox(null)} className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors text-sm" aria-label="Close"><FaTimes /></button>
+            </motion.div>
+          </motion.div>
+        )}
+      </div>
+    </section>
+  );
+}
