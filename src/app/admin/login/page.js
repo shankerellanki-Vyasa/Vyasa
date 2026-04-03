@@ -10,6 +10,7 @@ export default function AdminLoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -37,7 +38,7 @@ export default function AdminLoginPage() {
   return (
     <section className="min-h-[100svh] bg-background flex items-center justify-center px-6 py-16">
       <div className="w-full max-w-md bg-white border border-gray-100 rounded-3xl shadow-xl p-8">
-        <h1 className="text-2xl font-bold text-primary-dark mb-2">Admin Login</h1>
+        <h1 className="text-2xl font-bold text-primary-dark mb-2">Vyasa Institute Admin Login</h1>
 
         {error && <p className="mb-4 text-sm text-red-600">{error}</p>}
 
@@ -50,14 +51,24 @@ export default function AdminLoginPage() {
             required
             className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30"
           />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            required
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30"
-          />
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 pr-16 focus:outline-none focus:ring-2 focus:ring-primary/30"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((v) => !v)}
+              className="absolute inset-y-0 right-3 my-auto text-sm text-primary hover:text-primary-dark"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
           <button
             type="submit"
             disabled={loading}
