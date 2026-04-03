@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://vyasasstudies.com"),
+  metadataBase: new URL("https://www.vyasastudies.in"),
   title: {
     default: "Vyasa Institute | Building India\u2019s Future Chartered Accountants",
     template: "%s | Vyasa Institute",
@@ -39,7 +39,7 @@ export const metadata = {
     "chartered accountant coaching",
     "professional course institute",
   ],
-  authors: [{ name: "Vyasa Institute", url: "https://vyasasstudies.com" }],
+  authors: [{ name: "Vyasa Institute", url: "https://www.vyasastudies.in" }],
   creator: "Vyasa Institute",
   openGraph: {
     title: "Vyasa Institute | Building India\u2019s Future Chartered Accountants",
@@ -48,10 +48,10 @@ export const metadata = {
     type: "website",
     siteName: "Vyasa Institute",
     locale: "en_IN",
-    url: "https://vyasasstudies.com",
+    url: "https://www.vyasastudies.in",
     images: [
       {
-        url: "/logo.png",
+        url: "https://www.vyasastudies.in/logo.png",
         width: 280,
         height: 64,
         alt: "Vyasa Institute - Institute for Professional Courses",
@@ -62,6 +62,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Vyasa Institute | CA & CMA Preparatory Institute",
     description: "India\u2019s premier preparatory institute for CA & CMA. Proven rank, expert faculty. Vijayawada & Guntur.",
+    images: ["https://www.vyasastudies.in/logo.png"],
   },
   robots: {
     index: true,
@@ -72,7 +73,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: "https://vyasasstudies.com",
+    canonical: "https://www.vyasastudies.in",
   },
   category: "education",
 };
@@ -83,7 +84,7 @@ export default function RootLayout({ children }) {
     "@type": "EducationalOrganization",
     name: "Vyasa Institute",
     alternateName: "Vyasas Institute for Professional Courses",
-    url: "https://vyasasstudies.com",
+    url: "https://www.vyasastudies.in",
     description: "Premier preparatory institute for CA & CMA in Vijayawada and Guntur",
     address: {
       "@type": "PostalAddress",
@@ -92,7 +93,7 @@ export default function RootLayout({ children }) {
       addressCountry: "IN",
     },
     telephone: "+919876543210",
-    email: "info@vyasasstudies.com",
+    email: "info@vyasastudies.in",
     areaServed: ["Vijayawada", "Guntur"],
   };
 
@@ -101,11 +102,11 @@ export default function RootLayout({ children }) {
     "@type": "WebPage",
     name: "Vyasa Institute | CA & CMA Preparatory Institute - Vijayawada & Guntur",
     description: "India's premier preparatory institute for CA & CMA. Proven All India Rank, expert faculty, disciplined pathway to professional success.",
-    url: "https://vyasasstudies.com",
+    url: "https://www.vyasastudies.in",
     isPartOf: {
       "@type": "WebSite",
       name: "Vyasa Institute",
-      url: "https://vyasasstudies.com",
+      url: "https://www.vyasastudies.in",
     },
   };
 
