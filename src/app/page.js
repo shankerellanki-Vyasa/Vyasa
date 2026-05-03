@@ -27,7 +27,7 @@ export default function Home() {
         <AboutSection />
         {/* <StatsBar /> */}
         <TrustedBySection />
-         <ResultsSection /> 
+        {/* <ResultsSection /> */}
         <JourneySection />
         <CoursesSection />
         <WhyChooseSection />
