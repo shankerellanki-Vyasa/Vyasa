@@ -36,7 +36,7 @@ const stats = [
 ];
 
 const rankHolders = [
-  { rank: "AIR 35", name: "R.Bala Krishna", exam: "CA Final" },
+  { rank: "AIR 38", name: "R.Bala Krishna", exam: "CMA Inter" },
   { name: "M.Harini", exam: "CA Inter Nov " },
   {  name: "K.Chinna ManiKanta", exam: "CMA Final Dec " },
 
